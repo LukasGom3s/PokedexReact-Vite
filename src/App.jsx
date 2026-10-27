@@ -1,42 +1,56 @@
 import React, { useState } from 'react';
 import { PokemonList } from './components/PokemonList.jsx';
 import { PokemonDetails } from './components/PokemonDetails.jsx';
-import { SearchBar } from './components/SearchBar.jsx'; // Nova importação
+import { SearchBar } from './components/SearchBar.jsx';
 import pokedexData from './data/pokedex-data.json';
+import './index.css'; 
 
 function App() {
   const [pokemonList] = useState(pokedexData.pokemon);
+  const [typesList] = useState(pokedexData.types);
+  
   const [selectedPokemon, setSelectedPokemon] = useState(null);
-  const [searchTerm, setSearchTerm] = useState(''); // Estado da barra de pesquisa
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedType, setSelectedType] = useState(''); 
 
-  // Filtra a lista com base no nome ou ID digitado
-  const filteredPokemon = pokemonList.filter(pokemon => 
-    pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    String(pokemon.id).includes(searchTerm)
-  );
+  const filteredPokemon = pokemonList.filter(pokemon => {
+    const matchesSearch = pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                          String(pokemon.id).includes(searchTerm);
+    
+    const matchesType = selectedType === '' || 
+                        pokemon.types.some(t => t.name === selectedType);
+
+    return matchesSearch && matchesType;
+  });
 
   return (
-    <div style={{ padding: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}>
-      <h1 style={{ color: 'white' }}>Todos os Pokemon</h1>
+    <div className="app-layout">
+      {/* Removemos a Sidebar daqui */}
       
-      {/* Barra de pesquisa inserida acima da lista */}
-      <SearchBar 
-        searchTerm={searchTerm} 
-        onSearchChange={setSearchTerm} 
-      />
-
-      {/* Passamos a lista filtrada em vez da lista completa */}
-      <PokemonList 
-        pokemonList={filteredPokemon} 
-        onSelectPokemon={setSelectedPokemon} 
-      />
-
-      {selectedPokemon && (
-        <PokemonDetails 
-          pokemon={selectedPokemon} 
-          onClose={() => setSelectedPokemon(null)} 
+      <main className="main-content">
+        <header className="app-header">
+          {/* O SearchBar agora cuida da pesquisa e do filtro de tipos */}
+          <SearchBar 
+            searchTerm={searchTerm} 
+            onSearchChange={setSearchTerm}
+            types={typesList}
+            selectedType={selectedType}
+            onSelectType={setSelectedType}
+          />
+        </header>
+        
+        <PokemonList 
+          pokemonList={filteredPokemon} 
+          onSelectPokemon={setSelectedPokemon} 
         />
-      )}
+
+        {selectedPokemon && (
+          <PokemonDetails 
+            pokemon={selectedPokemon} 
+            onClose={() => setSelectedPokemon(null)} 
+          />
+        )}
+      </main>
     </div>
   );
 }
