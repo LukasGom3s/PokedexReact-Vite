@@ -1,19 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PokemonList } from './components/PokemonList.jsx';
+// Importa o ficheiro JSON (ajusta o caminho se a tua pasta tiver outro nome)
+import pokedexData from './data/pokedex-data.json';
 
 function App() {
-  // Array de teste com múltiplos objetos
-  const mockPokemonList = [
-    { id: 1, name: 'bulbasaur', types: ['Grass', 'Poison'] },
-    { id: 4, name: 'charmander', types: ['Fire'] },
-    { id: 7, name: 'squirtle', types: ['Water'] },
-    { id: 25, name: 'pikachu', types: ['Electric'] }
-  ];
+  const [pokemonList, setPokemonList] = useState(pokedexData.pokemon);
 
   return (
     <div style={{ padding: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <h1 style={{ color: 'white', marginBottom: '20px' }}>Todos os Pokemon</h1>
-      <PokemonList pokemonList={mockPokemonList} />
+      
+      <PokemonList pokemonList={pokemonList} />
     </div>
   );
 }

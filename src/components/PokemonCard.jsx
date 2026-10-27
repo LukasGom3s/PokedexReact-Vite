@@ -21,13 +21,13 @@ export function PokemonCard({ pokemon }) {
       </div>
 
       <div className="pokemon-types">
-        {pokemon.types.map((type, index) => (
+        {pokemon.types.map((typeObj, index) => (
           <span 
             key={index} 
             className="type-badge"
-            style={{ backgroundColor: `var(--type-${type.toLowerCase()})` }}
+            style={{ backgroundColor: `var(--type-${typeObj.name.toLowerCase()})` }}
           >
-            {type}
+            {typeObj.name}
           </span>
         ))}
       </div>
