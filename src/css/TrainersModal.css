@@ -1,0 +1,67 @@
+.trainers-modal {
+  max-width: 800px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.trainers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.trainer-card {
+  background-color: var(--bg-card);
+  border: 1px solid #333;
+  border-radius: var(--border-radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.trainer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #444;
+  padding-bottom: 8px;
+}
+
+.trainer-header h3 {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+}
+
+.badges {
+  font-size: 0.9rem;
+  color: var(--type-electric); /* Amarelo para as insígnias */
+  font-weight: bold;
+}
+
+.trainer-pokemon-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.trainer-pokemon-mini {
+  width: 50px;
+  height: 50px;
+  background-color: #2a2a2f;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+}
+
+.trainer-pokemon-mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

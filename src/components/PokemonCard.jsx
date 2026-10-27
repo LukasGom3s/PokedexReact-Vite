@@ -1,5 +1,5 @@
 import React from 'react';
-import './PokemonCard.css';
+import '../css/PokemonCard.css';
 
 export function PokemonCard({ pokemon, onClick }) {
   const formattedId = String(pokemon.id).padStart(3, '0');

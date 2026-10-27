@@ -1,5 +1,5 @@
 import React from 'react';
-import './PokemonDetails.css';
+import '../css/PokemonDetails.css';
 
 export function PokemonDetails({ pokemon, onClose }) {
   if (!pokemon) return null;

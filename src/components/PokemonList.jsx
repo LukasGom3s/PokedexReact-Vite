@@ -1,6 +1,6 @@
 import React from 'react';
 import { PokemonCard } from './PokemonCard.jsx';
-import './PokemonList.css';
+import '../css/PokemonList.css';
 
 export function PokemonList({ pokemonList, onSelectPokemon }) {
   if (!pokemonList || pokemonList.length === 0) {
