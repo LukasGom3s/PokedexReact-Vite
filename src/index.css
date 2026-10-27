@@ -1,0 +1,87 @@
+/* Variáveis CSS */
+:root {
+  /* Cores de Fundo */
+  --bg-main: #121214;      
+  --bg-card: #202024;      
+  --bg-sidebar: #18181b;   
+  
+  /* Cores de Destaque */
+  --primary-red: #d32f2f; 
+  --primary-red-hover: #b71c1c;
+
+  /* Cores de Texto */
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+
+  /* Cores das Tipagens*/
+  --type-grass: #4caf50;
+  --type-poison: #9c27b0;
+  --type-fire: #f44336;
+  --type-water: #2196f3;
+  --type-flying: #90caf9;
+  --type-normal: #A8A77A;
+  --type-fire: #EE8130;
+  --type-water: #6390F0;
+  --type-electric: #F7D02C;
+  --type-grass: #7AC74C;
+  --type-ice: #96D9D6;
+  --type-fighting: #C22E28;
+  --type-poison: #A33EA1;
+  --type-ground: #E2BF65;
+  --type-flying: #A98FF3;
+  --type-psychic: #F95587;
+  --type-bug: #A6B91A;
+  --type-rock: #B6A136;
+  --type-ghost: #735797;
+  --type-dragon: #6F35FC;
+  --type-dark: #705746;
+  --type-steel: #B7B7CE;
+  --type-fairy: #D685AD;
+  
+  /* Bordas e Sombras */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos Globais Básicos*/
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background-color: var(--primary-red);
+  color: var(--text-primary);
+  padding: 8px 24px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-red-hover);
+}
