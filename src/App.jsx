@@ -1,16 +1,27 @@
 import React, { useState } from 'react';
 import { PokemonList } from './components/PokemonList.jsx';
-// Importa o ficheiro JSON (ajusta o caminho se a tua pasta tiver outro nome)
+import { PokemonDetails } from './components/PokemonDetails.jsx';
 import pokedexData from './data/pokedex-data.json';
 
 function App() {
-  const [pokemonList, setPokemonList] = useState(pokedexData.pokemon);
+  const [pokemonList] = useState(pokedexData.pokemon);
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
 
   return (
     <div style={{ padding: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <h1 style={{ color: 'white', marginBottom: '20px' }}>Todos os Pokemon</h1>
       
-      <PokemonList pokemonList={pokemonList} />
+      <PokemonList 
+        pokemonList={pokemonList} 
+        onSelectPokemon={setSelectedPokemon} 
+      />
+
+      {selectedPokemon && (
+        <PokemonDetails 
+          pokemon={selectedPokemon} 
+          onClose={() => setSelectedPokemon(null)} 
+        />
+      )}
     </div>
   );
 }

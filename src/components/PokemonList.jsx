@@ -2,8 +2,7 @@ import React from 'react';
 import { PokemonCard } from './PokemonCard.jsx';
 import './PokemonList.css';
 
-export function PokemonList({ pokemonList }) {
-  // Tratamento para quando a pesquisa ou filtro não devolve resultados
+export function PokemonList({ pokemonList, onSelectPokemon }) {
   if (!pokemonList || pokemonList.length === 0) {
     return (
       <div className="empty-list">
@@ -15,7 +14,11 @@ export function PokemonList({ pokemonList }) {
   return (
     <div className="pokemon-grid">
       {pokemonList.map((pokemon) => (
-        <PokemonCard key={pokemon.id} pokemon={pokemon} />
+        <PokemonCard 
+          key={pokemon.id} 
+          pokemon={pokemon} 
+          onClick={() => onSelectPokemon(pokemon)}
+        />
       ))}
     </div>
   );
